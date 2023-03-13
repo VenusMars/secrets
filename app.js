@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
-const encrypt = require("mongoose-encryption");
+const md5 = require("md5");
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -21,15 +21,7 @@ const userSchema = new mongoose.Schema ({
     password:String
 });
 
-
-// Add any other plugins or middleware here. For example, middleware for hashing passwords
-var encKey = process.env.ENCRYPT_KEY;
-userSchema.plugin(encrypt, { secret: encKey ,encryptedFields:["password"]});
-
-// This adds _ct and _ac fields to the schema, as well as pre 'init' and pre 'save' middleware,
-// and encrypt, decrypt
 const User = mongoose.model("User",userSchema);
-
 
 app.get("/",function(req,res){
     res.render("home");
@@ -40,7 +32,7 @@ app.get("/login",function(req,res){
 });
 app.post("/login",async(req,res)=>{
     const userEmail = req.body.username;
-    const password = req.body.password;
+    const password = md5(req.body.password);
     try{
         const results = await User.findOne({email:userEmail});
         if(results){
@@ -62,7 +54,7 @@ app.get("/register",function(req,res){
 app.post("/register",function(req,res){
         const newUser = new User({
             email:req.body.username,
-            password:req.body.password
+            password:md5(req.body.password)
         });
         try{
             newUser.save();
