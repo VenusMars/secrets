@@ -1,6 +1,10 @@
 
+
+/* Refer for gradient color - https://mycolor.space/gradient3?ori=to+right+bottom&hex=%23C8D16B&hex2=%2386A8E7&hex3=%235FFBF1&submit=submit */
 body {
-  background-color: #E8ECEF;
+  /* background-image: linear-gradient(to right, #9db99d, #81b8a9, #6ab5bb, #65aecc, #7ba3d4, #7e94ce, #8683c4, #9171b5, #7e5ba7, #6b4599, #57308c, #43197e); */
+  /* background-image: linear-gradient(to right , #ada2e1, #b8abe4, #c3b4e6, #cdbde9, #d6c7ec, #d2c8ef, #cec9f1, #c9caf3, #afc4f4, #8dbff2, #62bbed, #15b7e3); */
+  background-image: linear-gradient(to right, #9c8de5, #ac99e7, #bba6e9, #c8b3eb, #d4c1ed, #cfc5ee, #cbc9ed, #c9ccec, #b5c7e7, #a0c2df, #8dbdd4, #7cb7c7);
 }
 
 .centered {
@@ -10,7 +14,28 @@ body {
 
 .secret-text {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.3rem;
   color: #fff;
-  background-color: #000;
+  font-family: 'Bona Nova', serif;
+}
+
+.bg-chg-color{
+  background-color: #cccccc;
+  background-image: repeating-linear-gradient(lightblue,indigo );
+  color:#fff;
+  font-size:1.3rem;
+  font-family:'Bona Nova', serif;
+
+}
+
+.register-setting{
+  font-family: 'Bona Nova', serif;
+  background-color: #9C8DE5;
+}
+
+.home-content{
+  font-family: 'Bona Nova', serif;
+  font-size:1.2rem;
+  padding:2%;
+  text-align: left;
 }
